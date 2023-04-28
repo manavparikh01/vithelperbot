@@ -1,44 +1,13 @@
-import React, { useState } from 'react';
-//import {withRouter} from "react-router";
+import { ChakraProvider, theme } from "@chakra-ui/react";
+import Chat from "./Chat";
 
-function HelperBot() {
-  const [messages, setMessages] = useState([]);
-  const [currentMessage, setCurrentMessage] = useState('');
-
-  function handleInputChange(event) {
-    setCurrentMessage(event.target.value);
-  }
-
-  function handleFormSubmit(event) {
-    event.preventDefault();
-    if (currentMessage.trim() !== '') {
-      setMessages([...messages, currentMessage]);
-      setCurrentMessage('');
-    }
-  }
-
+const HelperBot = () => {
   return (
-    <div>
-      <h1>Chat Page</h1>
-
-      <div>
-        {messages.map((message, index) => (
-          <p key={index}>{message}</p>
-        ))}
-      </div>
-
-      <form onSubmit={handleFormSubmit}>
-        <input 
-          type='text' 
-          placeholder='Type your message here...' 
-          value={currentMessage} 
-          onChange={handleInputChange}
-        />
-        <button type='submit'>Send</button>
-      </form> 
-    </div>
+    <ChakraProvider theme={theme}>
+      <Chat />
+    </ChakraProvider>
   );
-}
+};
 
 export default HelperBot;
 
