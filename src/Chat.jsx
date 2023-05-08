@@ -4,17 +4,11 @@ import Divider from "./components/Divider";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import Messages from "./components/Messages";
+import DividerFooter from "./components/DividerFooter";
 
 const Chat = () => {
   const [messages, setMessages] = useState([
-    { from: "computer", text: "Hi, My Name is HoneyChat" },
-    { from: "me", text: "Hey there" },
-    { from: "me", text: "Myself Ferin Patel" },
-    {
-      from: "computer",
-      text:
-        "Nice to meet you. You can send me message and i'll reply you with same message."
-    }
+    { from: "computer", text: "Hi, nice to meet you. I can solve your doubts related to VIT" },
   ]);
   const [inputMessage, setInputMessage] = useState("");
 
@@ -47,12 +41,12 @@ const Chat = () => {
     );
   };
   return (
-    <Flex w="100%" h="100vh" justify="center" align="center">
-      <Flex w={["100%", "100%", "40%"]} h="90%" flexDir="column">
+    <Flex w="100%" h="100vh" justify="center" align="center" bgColor="#3A1C58">
+      <Flex w={["100%", "100%", "65%"]} h="95%" flexDir="column">
         <Header />
         <Divider />
         <Messages messages={messages} />
-        <Divider />
+        <DividerFooter />
         <Footer
           inputMessage={inputMessage}
           setInputMessage={setInputMessage}

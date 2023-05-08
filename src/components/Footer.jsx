@@ -6,28 +6,40 @@ const Footer = ({ inputMessage, setInputMessage, handleSendMessage }) => {
     <Flex w="100%" mt="5">
       <Input
         placeholder="Type Something..."
+        color="#FFE5FB"
         border="none"
-        borderRadius="none"
+        borderRadius="4"
+        _placeholder={{
+          color: "#FFE5FB"
+        }}
         _focus={{
-          border: "1px solid black",
+          bgColor: "#AD48C1",
+          border: "none",
+          outlineStyle: "none",
+	        boxShadow: "none",
         }}
         onKeyPress={(e) => {
           if (e.key === "Enter") {
             handleSendMessage();
           }
         }}
+        mx="3"
+        //bgColor="#AD48C1"
         value={inputMessage}
         onChange={(e) => setInputMessage(e.target.value)}
       />
       <Button
-        bg="black"
-        color="white"
-        borderRadius="none"
+        //bg="#C77BDA"
+        bg="#AD48C1"
+        color="#FFE5FB"
+        borderRadius="4"
         _hover={{
-          bg: "white",
-          color: "black",
-          border: "1px solid black",
+          bg: "#3A1C58",
+          //bg: "#FFE5FB",
+          color: "#C77BDA",
+          border: "none",
         }}
+        marginRight="3"
         disabled={inputMessage.trim().length <= 0}
         onClick={handleSendMessage}
       >
