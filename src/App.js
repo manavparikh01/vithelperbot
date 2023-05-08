@@ -11,7 +11,8 @@ function App() {
        <div >
          <Routes>
 
-           <Route path="/" element={<AdminPage />} />
+           <Route path="/" element={<HomePage />} />
+           <Route path="/admin" element={<AdminPage />} />
            <Route path="/helperbot" element={<HelperBot />} />
          </Routes>
          </div>

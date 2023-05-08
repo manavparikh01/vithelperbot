@@ -38,7 +38,9 @@ const Chat = () => {
         response.json().then((result)=>{
       setMessages((old) => [...old, { from: "computer", text: result}])});
       }
-    );
+    ).catch(() => {
+      setMessages((old) => [...old, {from: "computer", text: "Server is down"}])
+    });
   };
   return (
     <Flex w="100%" h="100vh" justify="center" align="center" bgColor="#3A1C58">
