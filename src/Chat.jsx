@@ -20,12 +20,26 @@ const Chat = () => {
 
     setMessages((old) => [...old, { from: "me", text: data }]);
     setInputMessage("");
-
-    setTimeout(() => {
-      setMessages((old) => [...old, { from: "computer", text: data }]);
-    }, 1000);
+    fetchAnswer(inputMessage)
   };
+  const fetchAnswer = (question) => {
+    const requestOptions = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        question:question
+      }),
+    };
+    fetch("http://localhost:5015/question", requestOptions).then(
+      (response) => {
 
+        response.json().then((result)=>{
+      setMessages((old) => [...old, { from: "computer", text: result}])});
+      }
+    );
+  };
   return (
     <Flex w="100%" h="100vh" justify="center" align="center" bgColor="#3A1C58">
       <Flex w={["100%", "100%", "65%"]} h="95%" flexDir="column">
