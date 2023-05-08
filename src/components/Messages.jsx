@@ -9,14 +9,27 @@ const Messages = ({ messages }) => {
   };
 
   return (
-    <Flex w="100%" h="80%" overflowY="scroll" flexDirection="column" p="3">
+    <Flex w="100%" h="80%" 
+    overflowY="scroll" 
+    flexDirection="column" px="1"
+    sx={{
+      '&::-webkit-scrollbar': {
+        width: '16px',
+        borderRadius: '4px',
+        backgroundColor: `rgba(0, 0, 0, 0.05)`,
+      },
+      '&::-webkit-scrollbar-thumb': {
+        backgroundColor: `rgba(235, 133, 246, 0.5)`,
+        borderRadius: '4px',
+      },
+    }}>
       {messages.map((item, index) => {
         if (item.from === "me") {
           return (
             <Flex key={index} w="100%" justify="flex-end">
               <Flex
-                bg="black"
-                color="white"
+                // bg="black"
+                color="#FFE5FB"
                 minW="100px"
                 maxW="350px"
                 my="1"
@@ -28,18 +41,21 @@ const Messages = ({ messages }) => {
           );
         } else {
           return (
-            <Flex key={index} w="100%">
+            <Flex key={index} w="100%" bg="#C77BDA" justifyItems="center" alignItems="center"
+            paddingLeft="2" paddingTop="2" paddingBottom="2" paddingRight="2" borderRadius="5">
               <Avatar
-                name="Computer"
+                name="VIT"
+                //src="https://getavataaars.com/?avatarStyle=Circle&clotheType=BlazerShirt&eyeType=Hearts&eyebrowType=Angry&facialHairColor=Platinum&facialHairType=BeardMajestic&mouthType=Tongue&skinColor=Light&topType=Eyepatch"
                 src="https://avataaars.io/?avatarStyle=Transparent&topType=LongHairStraight&accessoriesType=Blank&hairColor=BrownDark&facialHairType=Blank&clotheType=BlazerShirt&eyeType=Default&eyebrowType=Default&mouthType=Default&skinColor=Light"
-                bg="blue.300"
+                size="sm"
+                bg="#3A1C58"
               ></Avatar>
               <Flex
-                bg="gray.100"
-                color="black"
+                //bg="gray.100"
+                color="#FFE5FB"
                 minW="100px"
                 maxW="350px"
-                my="1"
+                //my="1"
                 p="3"
               >
                 <Text>{item.text}</Text>
