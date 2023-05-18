@@ -38,12 +38,8 @@ const Chat = () => {
 
         response.json().then((result)=>{
       setMessages(messages.splice(-1, 1));
-      if (!inputMessage.trim().length) {
-        return;
-      }
-      const data = inputMessage;
   
-      setMessages((old) => [...old, { from: "me", text: data }]);
+      setMessages((old) => [...old, { from: "me", text: inputMessage }]);
       setMessages((old) => [...old, { from: "computer", text: result}])});
       }
     ).catch(() => {
