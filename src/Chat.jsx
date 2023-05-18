@@ -32,10 +32,18 @@ const Chat = () => {
         question:question
       }),
     };
+    setMessages((old) => [...old, { from: "computer", text: "Loading..."}])
     fetch("http://localhost:5015/question", requestOptions).then(
       (response) => {
 
         response.json().then((result)=>{
+      setMessages(messages.splice(-1, 1));
+      if (!inputMessage.trim().length) {
+        return;
+      }
+      const data = inputMessage;
+  
+      setMessages((old) => [...old, { from: "me", text: data }]);
       setMessages((old) => [...old, { from: "computer", text: result}])});
       }
     ).catch(() => {
