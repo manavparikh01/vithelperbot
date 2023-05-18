@@ -37,10 +37,8 @@ const Chat = () => {
       (response) => {
 
         response.json().then((result)=>{
-      setMessages(messages.splice(-1, 1));
-  
-      setMessages((old) => [...old, { from: "me", text: inputMessage }]);
-      setMessages((old) => [...old, { from: "computer", text: result}])});
+
+      setMessages((old) => [...old.splice(0,old.length-1), { from: "computer", text: result}])});
       }
     ).catch(() => {
       setMessages((old) => [...old, {from: "computer", text: "Server is down"}])
